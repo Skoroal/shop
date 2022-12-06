@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+<div th:insert="header :: header"></div>
+
+<h1>Калькулятор</h1>
+<form action="/calc2" method="post">
+  <input type="text" name="num1" id="number1">
+<!--    <select onchange="f(value)" name="" id="sign">-->
+    <select  name="sign" id="sign">
+      <option value="none"> </option>
+      <option value="plus">+</option>
+      <option value="dif">-</option>
+      <option value="umn">*</option>
+      <option value="div">/</option>
+  </select>
+    <input type="text" name="num2" id="number2">
+    <br>  <br>
+    <input type="submit" name="noAjax" value="Посчитать без Ajax">
+    <input type="button" onclick="f($('#sign').val())" value="Посчитать через Ajax">
+</form>
+
+    <h1>Результат без Ajax: <span th:text="${res}?: '0.00'"> </span></h1>
+<div id="result">
+    <h1> Результат через Ajax: 0.00</h1>    </div>
+
+<script>
+        function f(sign) {
+            let n1 = $('#number1').val();
+            let n2 = $('#number2').val();
+            let str = `n1=${n1}&n2=${n2}&sign=${sign}`
+            $.ajax({
+                type: "POST",
+                url: "/calc",
+                data: str,
+                success: function (res) {
+                    $('#result').html(res);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

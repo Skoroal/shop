@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="header :: header"></div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <table style="display:block; margin:auto">
+            <tr>
+                <th>ИД</th>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+                <th>Действие</th>
+            </tr>
+            <tr th:each="product : ${goods}">
+                <td th:text="${product.book.id}"></td>
+                <td th:text="${product.book.title}"></td>
+                <td th:text="${product.count}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.count} * ${product.price}"></td>
+                <td><a th:href="'/cart/delete/' + ${product.id}">Удалить</a></td>
+            </tr>
+        </table>
+</div>
+
+
+</body>
+</html>

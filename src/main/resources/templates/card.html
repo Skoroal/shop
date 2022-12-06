@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="header :: header"></div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div>
+   <h1>Карточка товара</h1><br><br>
+    <h4>
+        <a th:href="'/edit/' + ${book.id}">Редактировать товар</a>
+        <br>
+        <a th:href="'/cart/add/' + ${book.id}">Добавить в корзину</a></h4>
+</div>
+        <div class="col">
+            <h1 th:text="'Название книги: ' + ${book.title}"></h1>
+            <h4 th:text="'Описание книги: ' + ${book.description}"></h4>
+            <h4 th:text="'Автор книги: ' + ${book.author}"></h4>
+            <h4 th:text="'Стоимость книги: ' + ${book.price}"></h4>
+        </div>
+
+</div>
+
+
+</body>
+</html>

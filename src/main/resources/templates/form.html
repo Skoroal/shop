@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="header :: header"></div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <form action="/book/add" method="post">
+        <p>Введите название книги</p>
+        <input type="text" name="title">
+
+        <p>Введите автора книги</p>
+        <input type="text" name="author">
+
+        <p>Введите описание для книги</p>
+        <input type="text" name="description">
+
+        <p>Введите стоимость книги</p>
+        <input type="text" name="price"><br><br>
+
+        <input type="submit" value="Сохранить">
+    </form>
+</div>
+
+
+</body>
+</html>
